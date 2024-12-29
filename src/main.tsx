@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import { store } from "./store.ts";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Users from "./pages/users/index.tsx";
+import Signup from "./components/signup.tsx";
+import Login from "./components/Login.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -15,6 +17,8 @@ createRoot(document.getElementById("root")!).render(
       <Router>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/users" element={<Users />} />
         </Routes>
       </Router>
