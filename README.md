@@ -1,6 +1,6 @@
-**<!-- @format -->
+<!-- @format -->
 
-# Project Name
+# Cymulate Frontend
 
 ## Description
 
@@ -11,17 +11,17 @@ A brief overview of what this project does and its main features. _(Replace this
 1. Clone the repository:
 
 ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone git@github.com:TadesseDev/Cymulate-Frontend.git
+   cd Cymulate-Frontend
 ```
 
-1. Install dependencies:
+2. Install dependencies:
 
    ```bash
    npm install
    ```
 
-2. Add the `.env` file in the root directory with the following content:
+3. Add the `.env` file in the root directory with the following content:
 
    ```env
    VITE_API_URL=http://localhost:3000/
@@ -45,13 +45,12 @@ A brief overview of what this project does and its main features. _(Replace this
 
 ## Features
 
-- Feature 1 _(Replace this placeholder with the actual feature)_
-- Feature 2 _(Replace this placeholder with the actual feature)_
-- Feature 3 _(Replace this placeholder with the actual feature)_
+- User authentication
+- Real-time data updates
+- Responsive design
 
 ## Technologies Used
 
-- Frontend Framework/Library _(Specify the frontend framework/library used, e.g., React, Vue, etc.)_
-- Backend _(Specify the backend technology, e.g., Node.js, Django, etc.)_
-- Database _(Specify the database used, e.g., MongoDB, PostgreSQL, etc.)_
-**
+- Frontend Framework/Library: React
+- Backend: Node.js, Nest.Js
+- Database: MongoDB
