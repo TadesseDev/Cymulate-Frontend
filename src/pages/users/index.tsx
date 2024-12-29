@@ -73,13 +73,14 @@ const EmailForm: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {attempts.map((attempt, index) => (
-            <tr key={index} className="dark-black ">
-              <td>{attempt.email}</td>
-              <td>{attempt.content}</td>
-              <td>{attempt.triggered ? "user fall for the link" : "not triggered"}</td>
-            </tr>
-          ))}
+          {attempts.length &&
+            attempts.map((attempt, index) => (
+              <tr key={index} className="dark-black ">
+                <td>{attempt.email}</td>
+                <td>{attempt.content}</td>
+                <td>{attempt.triggered ? "user fall for the link" : "not triggered"}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
       <button
