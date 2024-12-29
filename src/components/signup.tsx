@@ -2,8 +2,14 @@
 
 import React, { useState } from "react";
 import "./signup.css";
+import { createUser } from "../redux/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
+import { useNavigate } from "react-router-dom";
 
 const Signup: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,8 +25,20 @@ const Signup: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Signup Successful!");
+    dispatch(
+      createUser({
+        name: formData.name,
+        password: formData.password,
+        email: formData.email,
+      })
+    );
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+    });
+
+    navigate("/login");
   };
 
   return (
