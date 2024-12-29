@@ -87,7 +87,7 @@ const Signup: React.FC = () => {
         <hr />
         <span className="dark-black">Or</span>
         <hr />
-        <button type="submit" className="signup-button">
+        <button type="button" className="signup-button" onClick={() => navigate("/login")}>
           Login Here..
         </button>
       </form>

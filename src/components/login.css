@@ -4,7 +4,7 @@ body {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  background: linear-gradient(to right, #4e4046, #0a0004);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +47,7 @@ body {
 }
 
 .form-group input:focus {
-  border-color: #ff758c;
+  border-color: #3f031c;
   box-shadow: 0 0 5px rgba(255, 117, 140, 0.5);
 }
 
@@ -56,7 +56,7 @@ body {
   padding: 0.75rem;
   font-size: 1rem;
   color: white;
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  background: linear-gradient(to right, #3f031c, #3f031c);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -64,7 +64,7 @@ body {
 }
 
 .login-button:hover {
-  background: linear-gradient(to right, #ff7eb3, #ff758c);
+  background: linear-gradient(to right, #880039, #3f031c);
 }
 
 .login-button:active {
@@ -78,7 +78,7 @@ body {
 }
 
 .signup-link a {
-  color: #ff758c;
+  color: #3f031c;
   text-decoration: none;
   font-weight: bold;
 }
