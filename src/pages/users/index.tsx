@@ -6,15 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { createAttempt, fetchAttempts } from "../../redux/slices/stemptSlice";
 
-// const initialEmails = [
-//   // place holder
-//   { email: "example1@example.com", content: "Hello from example1" },
-//   { email: "example2@example.com", content: "Hello from example2" },
-//   { email: "example3@example.com", content: "Hello from example3" },
-// ];
-
 const EmailForm: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", content: "" });
+  const [error, setError] = useState<string | null>(null);
   const attempts = useSelector((state: RootState) => state.attempts.attempts);
   const dispatch = useDispatch<AppDispatch>();
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -33,12 +27,19 @@ const EmailForm: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchAttempts());
+    if (!localStorage.getItem("access_token")) {
+      setError("Please login first");
+      window.location.href = "/login";
+    }
   }, []);
 
   return (
     <div className="email-form-container">
       <form onSubmit={handleSubmit} className="email-form">
         <div className="form-group">
+          <span className="error">
+            <small>{error}</small>
+          </span>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
