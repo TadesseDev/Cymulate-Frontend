@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { UserDto } from "../redux/dto/user.dto";
+import { AttemptDto } from "../redux/dto/stempt.dto";
 
 const baseURL = import.meta.env.VITE_API_URL;
 // Create an axios instance
@@ -23,6 +24,18 @@ const createUserApi = async (uri: string, user: UserDto) => {
   return response.data;
 };
 
+const createAttemptApi = async (uri: string, attempt: AttemptDto) => {
+  debugger;
+  const response = await axiosInstance.post(uri, attempt);
+  return response.data;
+};
+
+const fetchAttemptsApi = async (uri: string) => {
+  debugger;
+  const response = await axiosInstance.get(uri);
+  return response.data;
+};
+
 const loginUserApi = async (
   uri: string,
   { email, password }: { email: string; password: string }
@@ -31,4 +44,4 @@ const loginUserApi = async (
   return response.data;
 };
 
-export { fetchUsersApi, createUserApi, loginUserApi };
+export { fetchUsersApi, createUserApi, loginUserApi, createAttemptApi, fetchAttemptsApi };

@@ -2,17 +2,21 @@
 
 import React, { useState } from "react";
 import "./index.css";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
+import { createAttempt } from "../../redux/slices/stemptSlice";
 
-const initialEmails = [
-  { email: "example1@example.com", content: "Hello from example1" },
-  { email: "example2@example.com", content: "Hello from example2" },
-  { email: "example3@example.com", content: "Hello from example3" },
-];
+// const initialEmails = [
+//   // place holder
+//   { email: "example1@example.com", content: "Hello from example1" },
+//   { email: "example2@example.com", content: "Hello from example2" },
+//   { email: "example3@example.com", content: "Hello from example3" },
+// ];
 
 const EmailForm: React.FC = () => {
-  const [emails, setEmails] = useState(initialEmails);
   const [formData, setFormData] = useState({ email: "", content: "" });
-
+  const attempts = useSelector((state: RootState) => state.attempts.attempts);
+  const dispatch = useDispatch<AppDispatch>();
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -21,8 +25,9 @@ const EmailForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.email && formData.content) {
-      setEmails([{ email: formData.email, content: formData.content }, ...emails]);
-      setFormData({ email: "", content: "" });
+      dispatch(
+        createAttempt({ email: formData.email, content: formData.content, triggered: false })
+      );
     }
   };
 
@@ -63,10 +68,10 @@ const EmailForm: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {emails.map((emailEntry, index) => (
+          {attempts.map((attempt, index) => (
             <tr key={index}>
-              <td>{emailEntry.email}</td>
-              <td>{emailEntry.content}</td>
+              <td>{attempt.email}</td>
+              <td>{attempt.content}</td>
             </tr>
           ))}
         </tbody>
