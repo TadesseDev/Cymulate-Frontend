@@ -25,13 +25,11 @@ const createUserApi = async (uri: string, user: UserDto) => {
 };
 
 const createAttemptApi = async (uri: string, attempt: AttemptDto) => {
-  debugger;
   const response = await axiosInstance.post(uri, attempt);
   return response.data;
 };
 
 const fetchAttemptsApi = async (uri: string) => {
-  debugger;
   const response = await axiosInstance.get(uri);
   return response.data;
 };

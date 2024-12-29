@@ -77,3 +77,8 @@ textarea {
 .email-table tbody tr:nth-child(odd) {
   background-color: #f9f9f9;
 }
+
+.dark-black {
+  color: black;
+  font-weight: bold;
+}

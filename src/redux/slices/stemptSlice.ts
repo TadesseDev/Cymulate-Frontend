@@ -6,6 +6,8 @@ import { AttemptSliceType } from "../type/ateptSlice.type";
 import { createAttemptApi, fetchAttemptsApi } from "../../utils/api";
 const initialState: AttemptSliceType = {
   attempts: [],
+  isLoading: false,
+  error: null,
 };
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
@@ -43,6 +45,26 @@ const attemptSlice = createSlice({
     clearAttempts: (state) => {
       state.attempts = [];
     },
+  },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(createAttempt.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createAttempt.fulfilled, (state, action: PayloadAction<AttemptDto>) => {
+        state.isLoading = false;
+        state.attempts.push(action.payload);
+      });
+
+    builder
+      .addCase(fetchAttempts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAttempts.fulfilled, (state, action: PayloadAction<AttemptDto[]>) => {
+        state.isLoading = false;
+        state.attempts = action.payload;
+      });
   },
 });
 

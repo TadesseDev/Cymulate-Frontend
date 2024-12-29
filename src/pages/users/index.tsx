@@ -1,10 +1,10 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import { createAttempt } from "../../redux/slices/stemptSlice";
+import { createAttempt, fetchAttempts } from "../../redux/slices/stemptSlice";
 
 // const initialEmails = [
 //   // place holder
@@ -30,6 +30,10 @@ const EmailForm: React.FC = () => {
       );
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchAttempts());
+  }, []);
 
   return (
     <div className="email-form-container">
@@ -65,13 +69,15 @@ const EmailForm: React.FC = () => {
           <tr>
             <th>Email</th>
             <th>Content</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
           {attempts.map((attempt, index) => (
-            <tr key={index}>
+            <tr key={index} className="dark-black ">
               <td>{attempt.email}</td>
               <td>{attempt.content}</td>
+              <td>{attempt.triggered ? "user fall for the link" : "not triggered"}</td>
             </tr>
           ))}
         </tbody>

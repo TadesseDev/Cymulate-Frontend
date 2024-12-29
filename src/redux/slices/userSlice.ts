@@ -12,11 +12,6 @@ const initialState: userSliceType = {
   message: "",
 };
 
-// const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
-//   const data = (await fetchUsersApi("/users")) as UserDto[];
-//   return data;
-// });
-
 const createUser = createAsyncThunk("user/signup", async (user: UserDto) => {
   try {
     const data = (await createUserApi("/users", user)) as UserDto;
@@ -58,10 +53,6 @@ export const userSlice = createSlice({
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
       });
-    // .addCase(loginUser.rejected, (state, action: PayloadAction<string>) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // });
   },
 });
 
