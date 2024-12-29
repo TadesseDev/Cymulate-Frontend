@@ -1,11 +1,11 @@
 /** @format */
 
 import { configureStore } from "@reduxjs/toolkit";
-import dataSlice from "./redux/dataSlice";
+import userSlice from "./redux/slices/userSlice";
 
 export const store = configureStore({
   reducer: {
-    data: dataSlice,
+    user: userSlice,
   },
 });
 
