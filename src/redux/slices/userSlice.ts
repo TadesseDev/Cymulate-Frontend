@@ -22,6 +22,7 @@ const createUser = createAsyncThunk("user/signup", async (user: UserDto) => {
     const data = (await createUserApi("/users", user)) as UserDto;
     return data;
   } catch (error) {
+    console.warn(error);
     return { error: "Failed to create user" } as const;
   }
 });

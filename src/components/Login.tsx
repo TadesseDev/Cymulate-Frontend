@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./login.css";
 import { loginUser } from "../redux/slices/userSlice";
 import { useDispatch } from "react-redux";

@@ -1,7 +1,6 @@
 /** @format */
 
 import axios from "axios";
-import { Cat } from "../redux/type/dataSlice.type";
 import { UserDto } from "../redux/dto/user.dto";
 
 const baseURL = import.meta.env.VITE_API_URL;
@@ -10,7 +9,7 @@ const axiosInstance = axios.create({
   baseURL: baseURL,
   timeout: 5000, // Timeout for requests
   headers: {
-    Authorization: "Bearer random token",
+    Authorization: localStorage.getItem("access_token"),
   },
 });
 
