@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.css";
 import { loginUser } from "../redux/slices/userSlice";
 import { useDispatch } from "react-redux";
@@ -26,9 +26,21 @@ const Login: React.FC = () => {
       loginUser({
         email: formData.email,
         password: formData.password,
+        redirectOnSuccess,
       })
     );
-    alert("Login Successful!");
+
+    setFormData({
+      email: "",
+      password: "",
+    });
+  };
+
+  const redirectOnSuccess = () => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      window.location.href = "/users";
+    }
   };
 
   return (

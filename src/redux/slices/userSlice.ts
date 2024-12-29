@@ -28,8 +28,18 @@ const createUser = createAsyncThunk("user/signup", async (user: UserDto) => {
 
 const loginUser = createAsyncThunk(
   "user/login",
-  async ({ email, password }: { email: string; password: string }) => {
+  async ({
+    email,
+    password,
+    redirectOnSuccess,
+  }: {
+    email: string;
+    password: string;
+    redirectOnSuccess: () => void;
+  }) => {
     const data = (await loginUserApi("/auth/login", { email, password })) as UserDto;
+    localStorage.setItem("access_token", data.access_token || "");
+    redirectOnSuccess();
     return data;
   }
 );
@@ -42,7 +52,6 @@ export const userSlice = createSlice({
     builder
       .addCase(loginUser.fulfilled, (state, action: PayloadAction<UserDto>) => {
         state.isLoading = false;
-        localStorage.setItem("access_token", action.payload.access_token || "");
         state.user = action.payload;
       })
       .addCase(loginUser.pending, (state) => {

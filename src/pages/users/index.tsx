@@ -1,25 +1,19 @@
 /** @format */
 
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { AppDispatch, RootState } from "../../store";
-// import { createUser, fetchUsers } from "../../redux/slices/userSlice";
-
 function Users() {
-  // const dispatch = useDispatch<AppDispatch>();
-  // const { users, error, isLoading } = useSelector((state: RootState) => state.user);
-  // useEffect(() => {
-  //   dispatch(fetchUsers());
-  //   // dispatch(
-  //   //   createUser({
-  //   //     name: "first user",
-  //   //     password: "dummy password",
-  //   //     email: "dummyemail@samplemail.com",
-  //   //   })
-  //   // );
-  // }, [dispatch]);
-
-  return <div></div>;
+  return (
+    <div>
+      user home page
+      <button
+        onClick={() => {
+          localStorage.removeItem("access_token");
+          window.location.href = "/login";
+        }}
+      >
+        Logout
+      </button>
+    </div>
+  );
 }
 
 export default Users;
