@@ -23,4 +23,13 @@ const createUserApi = async (uri: string, user: UserDto) => {
   const response = await axiosInstance.post(uri, user);
   return response.data;
 };
-export { fetchUsersApi, createUserApi };
+
+const loginUserApi = async (
+  uri: string,
+  { email, password }: { email: string; password: string }
+) => {
+  const response = await axiosInstance.post(uri, { email, password });
+  return response.data;
+};
+
+export { fetchUsersApi, createUserApi, loginUserApi };

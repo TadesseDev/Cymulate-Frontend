@@ -1,7 +1,9 @@
+/** @format */
+
 import { UserDto } from "../dto/user.dto";
 
 export interface userSliceType {
-  users: UserDto[];
+  user: UserDto | null;
   isLoading: boolean;
   error: string | null;
   message: string;

@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import "./login.css";
+import { loginUser } from "../redux/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -16,9 +19,15 @@ const Login: React.FC = () => {
     });
   };
 
+  const dispatch = useDispatch<AppDispatch>();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login data submitted:", formData);
+    dispatch(
+      loginUser({
+        email: formData.email,
+        password: formData.password,
+      })
+    );
     alert("Login Successful!");
   };
 
